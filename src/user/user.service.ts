@@ -21,9 +21,17 @@ export class UserService {
   findOneByEmail(email: string){
     return this._userRepository.findOne({where: {email}});
   }
-  
+  findOneByEmailWithPassword(email: string) {
+    return this._userRepository.findOne({where: {email},
+          select: {
+            id: true,
+            name: true,
+            role: true,
+            password: true, email: true}});
+  }
+
   findAll() {
-    return `This action returns all user`;
+    return this._userRepository.find();
   }
 
   findOne(id: number) {
