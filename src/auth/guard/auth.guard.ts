@@ -23,11 +23,7 @@ export class AuthGuard implements CanActivate {
       throw new UnauthorizedException("no token provide");
     }
     try {
-      const payload = await this._jwtService.verifyAsync(
-        token,{
-          secret: jwtConstants.secret
-        }
-      );
+      const payload = await this._jwtService.verifyAsync(token);
       request.user = payload;
     } catch (error) {
       throw new UnauthorizedException("invalid token");
