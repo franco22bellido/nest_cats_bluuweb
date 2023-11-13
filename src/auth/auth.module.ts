@@ -12,7 +12,7 @@ import {jwtConstants} from './constants/jwt.constants'
       {
         imports: [ConfigModule],
         useFactory: async (configService: ConfigService) => ({
-          secret: configService.get<string>('JWT_SECRET'),
+          secret: configService.get<string>('JWT_SECRET') || jwtConstants.secret,
           global: true,
           signOptions: {
             expiresIn: "2h"

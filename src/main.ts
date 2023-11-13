@@ -14,13 +14,14 @@ async function bootstrap() {
     })
     );
     
+
     app.enableCors({
       origin: true,
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
     });
     
-
-  await app.listen(parseInt(process.env.PORT));
+  await app.listen(parseInt(process.env.port)|| 3000);
+  
 }
 bootstrap();
